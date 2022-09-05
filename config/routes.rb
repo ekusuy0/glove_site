@@ -13,4 +13,55 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root to: 'public/homes#top'
+
+
+  scope module: :public do
+    get 'about' => 'homes#about'
+
+    resources :items, only: [:index, :show]
+
+    get 'users/my_page' => 'users#show'
+    get 'users/information/edit' => 'users#edit'
+    patch 'users/information' => 'users#update'
+    get 'users/out_check' => 'users#out_check'
+    patch 'users/out' => 'users#out'
+
+    resources :cart_items, except: [:edit, :show, :new] do
+      collection do
+        delete '/destroy_all' => 'cart_items#destroy_all'
+      end
+    end
+
+    resources :orders, except: [:destroy, :edit, :update] do
+      collection do
+        post '/confirm' => 'orders#confirm'
+        get '/complete' => 'orders#complete'
+      end
+    end
+
+    resources :shipping_addresses, except: [:show, :new]
+
+    get 'order_gloves/new' => 'order_gloves#new'
+    post 'order_gloves' => 'order_gloves#create'
+    get 'order_gloves/:id' => 'order_gloves#show'
+
+    # resources :order_gloves, only: [:new, :create, :show]
+  end
+
+  namespace :admin do
+
+    get '/' => 'homes#top'
+
+    resources :items, except: [:destroy]
+
+    resources :genres, except: [:new, :show, :destroy]
+
+    resources :users, except: [:new, :create, :destroy]
+
+    resources :orders, only: [:show, :update]
+
+    resources :ordered_items, only: [:update]
+  end
 end
