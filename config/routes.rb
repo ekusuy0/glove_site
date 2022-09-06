@@ -43,11 +43,7 @@ Rails.application.routes.draw do
 
     resources :shipping_addresses, except: [:show, :new]
 
-    get 'order_gloves/new' => 'order_gloves#new'
-    post 'order_gloves' => 'order_gloves#create'
-    get 'order_gloves/:id' => 'order_gloves#show'
-
-    # resources :order_gloves, only: [:new, :create, :show]
+    resources :custom_items, only: [:new, :create, :show]
   end
 
   namespace :admin do
