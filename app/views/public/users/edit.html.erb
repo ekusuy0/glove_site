@@ -1,0 +1,14 @@
+<h1>プロフィール編集画面</h1>
+<%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :zip_code %>
+  <%= f.text_field :zip_code %><br>
+  <%= f.label :address %>
+  <%= f.text_field :address %><br>
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %><br>
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
+  <%= f.submit "変更を保存する"%>
+<% end %>

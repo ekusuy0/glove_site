@@ -1,0 +1,14 @@
+<h1>マイページ</h1>
+<p>ユーザーネーム</p>
+<%= @user.name %>
+<p>郵便番号</p>
+<%= @user.zip_code %>
+<p>住所</p>
+<%= @user.address %>
+<p>電話番号</p>
+<%= @user.phone_number %>
+<p>メールアドレス</p>
+<%= @user.email %>
+
+<p><%= link_to '編集する', users_information_edit_path %></p>
+<p><%= link_to '退会する', users_out_check_path %></p>
