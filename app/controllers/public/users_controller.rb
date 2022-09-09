@@ -21,12 +21,14 @@ class Public::UsersController < ApplicationController
   def out
     @user = current_user
     @user.update(user_params)
-    session[:current_customer] = nil
+    sign_out current_user
     redirect_to  root_path
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :zip_code, :address, :phone_number, :email, :user_status)
   end
+
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GloveSite</title>
+    <title>グローブ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% if admin_signed_in? %>
+      <%= render 'layouts/admin_header' %>
+    <% else %>
+      <%= render 'layouts/user_header' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
