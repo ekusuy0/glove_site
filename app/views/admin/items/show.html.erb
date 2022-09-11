@@ -5,4 +5,5 @@
 <%= @item.description %>
 <p>値段(税抜き)</p>
 <%= @item.price %><br>
+<%= link_to '編集', edit_admin_item_path(@item.id) %><br>
 <%= link_to '商品一覧に戻る', admin_items_path %>

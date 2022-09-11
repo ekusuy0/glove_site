@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
+    <% unless user_signed_in? %>
       <%= render 'layouts/admin_header' %>
     <% else %>
       <%= render 'layouts/user_header' %>
