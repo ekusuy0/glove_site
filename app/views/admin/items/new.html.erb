@@ -1,5 +1,6 @@
 <h1>商品登録画面</h1>
 <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+  <%= f.file_field :item_image, accept: "image/*" %><br>
   <%= f.label :name, "商品名" %>
   <%= f.text_field :name %><br>
   <%= f.label :description, "商品説明" %>
