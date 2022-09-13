@@ -2,5 +2,5 @@ class CartItem < ApplicationRecord
 
   belongs_to :user
   belongs_to :item
-  belongs_to :custom_item
+  # belongs_to :custom_item
 end
