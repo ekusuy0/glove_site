@@ -3,7 +3,7 @@
 <p><%= @item.name %></p>
 <p class="m-0">商品説明</p>
 <p><%= @item.description %></p>
-<p>￥<%= @item.price %>(税込)</p>
+<p>￥<%= @item.tax_price %>(税込)</p>
 <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
   <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.hidden_field :quantity, :value => 1 %>

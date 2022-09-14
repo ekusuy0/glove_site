@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
 
   def new
+    @order = Order.new
   end
 
   def create
@@ -17,4 +18,6 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
+
+  private
 end

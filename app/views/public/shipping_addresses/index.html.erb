@@ -1,0 +1,17 @@
+<h1>住所登録</h1>
+<%= form_with model: @shipping_address do |f| %>
+  <%= f.label :zip_code, "郵便番号" %>
+  <%= f.text_field :zip_code %><br>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %><br>
+  <%= f.label :name, "宛先" %>
+  <%= f.text_field :name %><br>
+  <%= f.submit "登録する", class: "btn btn-success" %>
+<% end %>
+
+<h1>登録住所一覧</h1>
+<% @shipping_addresses.each do |shipping_address| %>
+  <%= shipping_address.address_display %>
+  <%= link_to '編集', edit_shipping_address_path(shipping_address) %>
+  <%= link_to '削除', shipping_address_path(shipping_address), method: :delete %>
+<% end %>

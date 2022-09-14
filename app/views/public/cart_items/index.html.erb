@@ -1,6 +1,9 @@
 <h1>カートアイテム一覧</h1>
+<%= link_to "すべての削除", destroy_all_cart_items_path, method: :delete, class: "btn btn-success" %><br>
 <% @cart_items.each do |cart_item| %>
   <%= cart_item.item.name %>
-  <%= cart_item.item.price %>
+  <%= cart_item.item.price %>円(税抜)
+  <%= cart_item.item.tax_price %>円(税込)
   <%= link_to "削除", cart_item_path(cart_item.id), method: :delete %><br>
 <% end %>
+<%= link_to "購入手続きへ進む", new_order_path, class: "btn btn-success" %>

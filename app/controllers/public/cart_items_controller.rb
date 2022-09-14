@@ -11,7 +11,6 @@ class Public::CartItemsController < ApplicationController
     else
       redirect_to request.referer
     end
-    logger.debug cart_item.errors.inspect
   end
 
   def update
@@ -24,6 +23,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
+    cart_items = current_user.cart_items
+    cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   private

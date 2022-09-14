@@ -1,0 +1,8 @@
+<h1>情報入力画面</h1>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+  <h4>支払方法</h4>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], :value => Order.payment_methods.key(0) %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], :value => Order.payment_methods.key(1) %>
+<% end %>
