@@ -1,8 +1,26 @@
 <h1>情報入力画面</h1>
-<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
   <h4>支払方法</h4>
   <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
   <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], :value => Order.payment_methods.key(0) %>
   <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
   <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], :value => Order.payment_methods.key(1) %>
+  <h4>お届け先</h4>
+  <%= f.radio_button :choice, 0, checked: "checked" %>
+  <%= f.label :choice, "ご自身の住所", :value => 0 %><br>
+  〒<%= current_user.zip_code %>
+  <%= current_user.address %><br>
+  <%= current_user.name %><br>
+  <%= f.radio_button :choice, 1 %>
+  <%= f.label :choice, "登録済住所から選択", :value => 1 %><br>
+  <%= f.select :address_id, options_from_collection_for_select(current_user.shipping_addresses.all, :id, :address_display) %><br>
+  <%= f.radio_button :choice, 2 %>
+  <%= f.label :choice, "新しいお届け先", :value => 2 %><br>
+  <%= f.label :zip_code, "郵便番号" %>
+  <%= f.text_field :zip_code %><br>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %><br>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %><br>
+  <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 <% end %>
