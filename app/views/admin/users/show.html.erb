@@ -1,0 +1,40 @@
+<h1><%= @user.name %>のユーザー詳細</h1>
+
+<table>
+  <tr>
+    <th>会員ID</th>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <th>氏名</th>
+    <hd><%= @user.name %></hd>
+  </tr>
+  <tr>
+    <th>郵便番号</th>
+    <td><%= @user.zip_code %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @user.address %></td>
+  </tr>
+    <th>電話番号</th>
+    <td><%= @user.phone_number %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>ユーザーステータス</th>
+    <td>
+      <% if @user.user_status %>
+        退会
+      <% else %>
+        有効
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<%= link_to '編集する', edit_admin_user_path(@user.id), class: "btn btn-success" %>
+<%= link_to '履歴一覧を見る', admin_path, class: "btn btn-primary" %>
