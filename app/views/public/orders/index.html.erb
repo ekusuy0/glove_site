@@ -4,4 +4,8 @@
   <% order.ordered_items.each do |ordered_item| %>
     <%= ordered_item.item.name %><br>
   <% end %>
+  <%= order.zip_code %>
+  <%= order.address %>
+  <%= order.name %><br>
+  <%= link_to '詳細', order_path(order.id), class: "btn btn-success" %><br>
 <% end %>

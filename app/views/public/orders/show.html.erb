@@ -1,0 +1,35 @@
+<h1>注文履歴詳細画面</h1>
+<h4>注文情報</h4>
+<%= @order.created_at.to_s(:datetime_jp) %><br>
+〒<%= @order.zip_code %><br>
+<%= @order.address %><br>
+<%= @order.name %><br>
+<%= @order.payment_method_i18n %><br>
+<%= @order.order_status_i18n %>
+
+<h4>請求情報</h4>
+商品合計：<%= @order.items_total %><br>
+配送料:<%= @order.delivery_money %><br>
+ご請求額：<%= @order.items_total + @order.delivery_money %><br>
+
+<h4>注文内容</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.ordered_items.each do |ordered_item| %>
+      <tr>
+        <td><%= ordered_item.item.name %></td>
+        <td><%= ordered_item.tax_price %></td>
+        <td><%= ordered_item.quantity %></td>
+        <td><%= ordered_item.tax_price * ordered_item.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
