@@ -1,0 +1,7 @@
+<h1>注文履歴一覧</h1>
+<% @orders.each do |order| %>
+  <%= order.created_at.to_s(:datetime_jp) %><br>
+  <% order.ordered_items.each do |ordered_item| %>
+    <%= ordered_item.item.name %><br>
+  <% end %>
+<% end %>
