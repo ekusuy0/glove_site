@@ -9,7 +9,11 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at.to_s(:datetime_jp) %></td>
+        <td>
+          <%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at.to_s(:datetime_jp) %>
+          <% end %>
+        </td>
         <td><%= order.user.name %></td>
         <td><%= order.items_total %></td>
         <td><%= order.order_status_i18n %></td>

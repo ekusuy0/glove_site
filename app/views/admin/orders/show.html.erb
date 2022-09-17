@@ -1,0 +1,22 @@
+<h1>注文履歴詳細</h1>
+購入者：<%= @order.user.name %><br>
+注文日：<%= @order.created_at.to_s(:datetime_jp) %><br>
+配送先：〒<%= @order.zip_code %><%= @order.address %><br>
+　　　　　<%= @order.name %><br>
+支払方法：<%= @order.payment_method_i18n %><br>
+注文ステータス：
+<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+  <%= f.select :order_status, Order.order_statuses_i18n.invert %>
+  <%= f.submit '更新' %>
+<% end %>
+
+<% @ordered_items.each do |ordered_item| %>
+  <%= ordered_item.item.name %>
+  <%= ordered_item.tax_price %>
+  <%= ordered_item.quantity %>
+  <%= ordered_item.tax_price * ordered_item.quantity %>
+  <%= form_with model: ordered_item, url: admin_ordered_item_path(ordered_item.id), method: :patch do |f| %>
+    <%= f.select :production_status, OrderedItem.production_statuses_i18n.invert %>
+    <%= f.submit '更新' %>
+  <% end %>
+<% end %>
