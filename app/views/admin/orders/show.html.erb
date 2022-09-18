@@ -11,12 +11,15 @@
 <% end %>
 
 <% @ordered_items.each do |ordered_item| %>
-  <%= ordered_item.item.name %>
-  <%= ordered_item.tax_price %>
-  <%= ordered_item.quantity %>
-  <%= ordered_item.tax_price * ordered_item.quantity %>
-  <%= form_with model: ordered_item, url: admin_ordered_item_path(ordered_item.id), method: :patch do |f| %>
-    <%= f.select :production_status, OrderedItem.production_statuses_i18n.invert %>
-    <%= f.submit '更新' %>
+  <% if ordered_item.item.present? %>
+    <%= ordered_item.item.name %>
+    <%= ordered_item.tax_price %>
+    <%= ordered_item.quantity %>
+    <%= ordered_item.tax_price * ordered_item.quantity %>
+    <%= form_with model: ordered_item, url: admin_ordered_item_path(ordered_item.id), method: :patch do |f| %>
+      <%= f.select :production_status, OrderedItem.production_statuses_i18n.invert %>
+      <%= f.submit '更新' %>
+    <% end %>
+  <% else %>
   <% end %>
 <% end %>
