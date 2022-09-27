@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_081645) do
+ActiveRecord::Schema.define(version: 2022_09_27_145826) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,13 +60,28 @@ ActiveRecord::Schema.define(version: 2022_09_12_081645) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "close_forms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "custom_items", force: :cascade do |t|
-    t.string "form", null: false
-    t.string "leather", null: false
-    t.string "close_form", null: false
-    t.string "color", null: false
-    t.string "net", null: false
-    t.string "embroidery"
+    t.integer "form_id", null: false
+    t.integer "leather_id", null: false
+    t.integer "close_form_id", null: false
+    t.integer "color_id", null: false
+    t.integer "glove_me_id", null: false
+    t.string "embroidery", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "forms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,12 +92,22 @@ ActiveRecord::Schema.define(version: 2022_09_12_081645) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "glove_meshes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
     t.boolean "sale_status", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "leathers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

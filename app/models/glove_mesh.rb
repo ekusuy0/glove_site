@@ -1,0 +1,2 @@
+class GloveMesh < ApplicationRecord
+end
