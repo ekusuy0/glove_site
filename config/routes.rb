@@ -59,5 +59,17 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
 
     resources :ordered_items, only: [:update]
+
+    get "/custom_item/content" => 'cart_items#content'
+
+    resources :close_forms, only: [:create, :destroy]
+
+    resources :colors, only: [:create, :destroy]
+
+    resources :forms, only: [:create, :destroy]
+
+    resources :glove_meshs, only: [:create, :destroy]
+
+    resources :leathers, only: [:create, :destroy]
   end
 end

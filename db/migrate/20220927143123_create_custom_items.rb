@@ -6,7 +6,7 @@ class CreateCustomItems < ActiveRecord::Migration[6.1]
       t.integer :leather_id, null: false
       t.integer :close_form_id, null: false
       t.integer :color_id, null: false
-      t.integer :glove_me_id, null: false
+      t.integer :glove_mesh_id, null: false
       t.string  :embroidery, null: false
 
       t.timestamps

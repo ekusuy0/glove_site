@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_27_145826) do
+ActiveRecord::Schema.define(version: 2022_09_29_011848) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_09_27_145826) do
     t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.integer "quantity", null: false
+    t.integer "custom_item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -63,11 +64,13 @@ ActiveRecord::Schema.define(version: 2022_09_27_145826) do
   create_table "close_forms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "colors", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "custom_items", force: :cascade do |t|
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 2022_09_27_145826) do
     t.integer "leather_id", null: false
     t.integer "close_form_id", null: false
     t.integer "color_id", null: false
-    t.integer "glove_me_id", null: false
+    t.integer "glove_mesh_id", null: false
     t.string "embroidery", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -84,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_09_27_145826) do
   create_table "forms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -95,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_09_27_145826) do
   create_table "glove_meshes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "items", force: :cascade do |t|
@@ -110,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_09_27_145826) do
   create_table "leathers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "ordered_items", force: :cascade do |t|
